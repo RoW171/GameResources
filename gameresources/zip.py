@@ -11,17 +11,15 @@ else: compression = ZIP_DEFLATED
 
 
 class ZipFileDamagedError(Exception):
-    def __init__(self, file, occurance): print(f"zipfile '{file}' is damaged, first error at {occurance}")
+    def __init__(self, file, occurance):
+        super(ZipFileDamagedError, self).__init__(f"zipfile '{file}' is damaged, first error at {occurance}")
 
 
 class ZipFileIntegrityError(Exception):
     def __init__(self, file, test, found, length, names):
-        print('zipfile integrity check failed')
-        print('file:', file)
-        print('test:', test)
-        print('found:', found)
-        print('number of content identical:', length)
-        print('content names identical:', names)
+        errorstring = f'\nzipfile integrity check failed\n\tfile: {file}\n\ttest: {test}\n\tfound: {found}\n\t' \
+                      f'number of content identical: {length}\n\tcontent namws identical: {names}'
+        super(ZipFileIntegrityError, self).__init__(errorstring)
 
 
 class ZipFileContents(dict):
