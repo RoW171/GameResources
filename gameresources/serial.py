@@ -3,7 +3,6 @@ __date__ = "2019-05-07"
 __version__ = "0.0.0"
 
 from json import dump as json_dump, load as json_load, dumps as json_dumps, loads as json_loads
-from json
 from dill import dump as dill_dump, load as dill_load, dumps as dill_dumps, loads as dill_loads,\
     HIGHEST_PROTOCOL, PicklingError, UnpicklingError
 
@@ -62,7 +61,6 @@ class dill:
     def loadObject(obj):
         try: return dill_loads(obj)
         except (UnpicklingError,): raise LoadError(dill.__name__)
-
 
 
 if __name__ == '__main__': pass
